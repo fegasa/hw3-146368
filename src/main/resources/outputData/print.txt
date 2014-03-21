@@ -1,0 +1,23 @@
+Q: Booth shot Lincoln?
+
+Score: 1.7000000000000002 (Booth shot Lincoln)
+Score: 0.6000000000000001 (Lincoln shot Booth)
+Score: 0.6000000000000001 (Lincoln was shot by Booth)
+Score: 0.6000000000000001 (Booth was shot by Lincoln)
+Score: 0.4 (Booth assassinated Lincoln)
+Score: 0.4 (Lincoln assassinated Booth)
+Score: 0.4 (Lincoln was assassinated by Booth)
+Score: 0.4 (Booth was assassinated by Lincoln)
+Precision @ 4: 0.5
+
+
+Q: John loves Mary?
+
+Score: 1.7000000000000002 (John loves Mary with all his heart)
+Score: 1.7000000000000002 (John loves Mary)
+Score: 0.6000000000000001 (Mary doesn't love John)
+Score: 0.6000000000000001 (John doesn't love Mary)
+Score: 0.4 (Mary is dearly loved by John)
+Precision @ 3: 0.6666666666666666
+
+

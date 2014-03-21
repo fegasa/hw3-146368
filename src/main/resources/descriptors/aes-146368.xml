@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>  
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="TestAnnotatorDescriptor">
+      <import name="descriptors.TestAnnotatorDescriptor"></import>
+    </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="TokenAnnotatorDescriptor">
+      <import name="descriptors.TokenAnnotatorDescriptor"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="NGramAnnotatorDescriptor">
+      <import name="descriptors.NGramAnnotatorDescriptor"></import>
+    </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="AnswerScoringDescriptor">
+      <import name="descriptors.AnswerScoringDescriptor"/>
+    </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="EvaluatorDescriptor">
+      <import name="descriptors.EvaluatorDescriptor"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>aes-146368</name>
+    <description>Analysis Engine, consists of 5 phases: annotation of q/a, tokenization of answers, gram generation for answers, scoring of each answer towards the question, evaluation of ranking.</description>
+    <version>1.0</version>
+    <vendor>private</vendor>
+    <configurationParameters searchStrategy="language_fallback"/>
+    <configurationParameterSettings/>
+    <flowConstraints>
+      <fixedFlow>
+        <node>TestAnnotatorDescriptor</node>
+      <node>TokenAnnotatorDescriptor</node>
+        <node>NGramAnnotatorDescriptor</node>
+        <node>AnswerScoringDescriptor</node>
+      <node>EvaluatorDescriptor</node>
+      </fixedFlow>
+    </flowConstraints>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Question</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Answer</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Token</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.NGram</type>
+        <type allAnnotatorFeatures="true">edu.cmu.deiis.types.AnswerScore</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+  <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>
