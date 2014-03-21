@@ -1,0 +1,34 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDeploymentDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>DeploymentDescriptor</name>
+  <description>Deployment descriptor for the analysis engine, each of the annotations will be handled out remotely and such, separated in order to be parallelized.</description>
+  <version>1.0</version>
+  <vendor/>
+  <deployment protocol="jms" provider="activemq">
+    <casPool numberOfCASes="10"/>
+    <service>
+      <inputQueue endpoint="ScnlpQueue" brokerURL="tcp://localhost:61616" prefetch="0"/>
+      <topDescriptor>
+        <import location="hw3-146368-aae.xml"/>
+      </topDescriptor>
+      <analysisEngine async="true">
+        <scaleout numberOfInstances="1"/>
+        <delegates>
+          <remoteAnalysisEngine key="TestAnnotatorDescriptor">
+            <inputQueue brokerURL="tcp://localhost:61616" endpoint="Annotator1RemoteQ"/>
+            <serializer method="xmi"/>
+          </remoteAnalysisEngine>
+          <remoteAnalysisEngine key="TokensAnnotator">
+            <inputQueue brokerURL="tcp://localhost:61616" endpoint="Annotator2RemoteQ"/>
+            <serializer method="xmi"/>
+          </remoteAnalysisEngine>
+          <remoteAnalysisEngine key="NGramAnnotator">
+            <inputQueue brokerURL="tcp://localhost:61616" endpoint="Annotator3RemoteQ"/>
+            <serializer method="xmi"/>
+          </remoteAnalysisEngine>
+        </delegates>
+      </analysisEngine>
+    </service>
+  </deployment>
+</analysisEngineDeploymentDescription>
